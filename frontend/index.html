@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoiceForge — AI Text to Speech Platform</title>
+  <meta name="description" content="Transform any text into natural, expressive voice in seconds. Powered by next-generation AI. Used by 50,000+ creators, developers, and enterprises.">
+  <link rel="stylesheet" href="design-system.css">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav class="landing-nav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">🎙</div>
+    <span class="logo-text">Voice<span>Forge</span></span>
+  </a>
+
+  <div class="nav-links-center">
+    <a href="#features">Features</a>
+    <a href="#voices">Voices</a>
+    <a href="#api">API</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+  </div>
+
+  <div class="nav-cta">
+    <a href="login.html" class="btn btn-ghost btn-sm">Sign in</a>
+    <a href="register.html" class="btn btn-primary btn-sm">Start free →</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-bg-glow2"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="eyebrow"><span class="dot"></span> Powered by Next-Gen AI</span>
+    </div>
+
+    <h1 class="hero-headline">
+      Give your words
+      <span class="accent-line">a voice.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Transform any text into studio-quality speech in seconds.
+      120+ natural voices. 30+ languages. API-first.
+    </p>
+
+    <div class="hero-actions">
+      <a href="register.html" class="btn btn-primary btn-lg">
+        Start for free — no card needed
+      </a>
+      <a href="#demo" class="btn btn-secondary btn-lg">
+        ▶ Hear a demo
+      </a>
+    </div>
+
+    <div class="social-proof">
+      <div class="sp-avatars">
+        <div class="sp-avatar">JK</div>
+        <div class="sp-avatar">SR</div>
+        <div class="sp-avatar">TM</div>
+        <div class="sp-avatar">AL</div>
+        <div class="sp-avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4)">+</div>
+      </div>
+      <div>
+        <div class="sp-stars">★★★★★</div>
+        <div class="sp-text"><strong>50,000+</strong> creators already using VoiceForge</div>
+      </div>
+      <div class="sp-text" style="color:var(--text-tertiary)">|</div>
+      <div class="sp-text"><strong style="color:var(--text-secondary)">4.9/5</strong> average rating</div>
+    </div>
+  </div>
+
+  <!-- Live Demo Card -->
+  <div class="hero-demo" id="demo">
+    <div class="demo-header">
+      <div class="demo-dots">
+        <div class="demo-dot r"></div>
+        <div class="demo-dot y"></div>
+        <div class="demo-dot g"></div>
+      </div>
+      <span class="demo-title">VoiceForge Studio — Live Preview</span>
+    </div>
+
+    <textarea class="demo-textarea" id="demoText" placeholder="Type something and hear it come to life…">Welcome to VoiceForge. The future of text-to-speech is here.</textarea>
+
+    <div class="demo-footer">
+      <div class="demo-voices">
+        <span class="voice-chip selected" onclick="selectVoice(this, 'aria')">Aria</span>
+        <span class="voice-chip" onclick="selectVoice(this, 'nova')">Nova</span>
+        <span class="voice-chip" onclick="selectVoice(this, 'echo')">Echo</span>
+        <span class="voice-chip" onclick="selectVoice(this, 'atlas')">Atlas</span>
+      </div>
+      <button class="btn btn-primary btn-sm" onclick="demoConvert()" id="demoBtn">
+        <span class="btn-label">▶ Generate</span>
+        <span class="spinner"></span>
+      </button>
+    </div>
+
+    <div class="demo-waveform" id="demoWaveform">
+      <audio id="demoAudio" controls></audio>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     TRUSTED BY
+════════════════════════════════════ -->
+<div class="trusted-section">
+  <div class="trusted-label">Trusted by teams at</div>
+  <div class="logos-row">
+    <span class="logo-item">Notion</span>
+    <span class="logo-item">Stripe</span>
+    <span class="logo-item">Linear</span>
+    <span class="logo-item">Vercel</span>
+    <span class="logo-item">Figma</span>
+    <span class="logo-item">Loom</span>
+    <span class="logo-item">Intercom</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     FEATURES
+════════════════════════════════════ -->
+<section class="section" id="features">
+  <div class="section-center">
+    <div class="section-eyebrow">
+      <span class="eyebrow">Features</span>
+    </div>
+    <h2 class="section-headline">Everything you need<br>to go from text to voice</h2>
+    <p class="section-sub">A complete platform built for creators, developers, and enterprises who demand quality at scale.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <div class="feature-title">Neural Voice Engine</div>
+      <div class="feature-desc">Our proprietary AI produces voices that are indistinguishable from human speech — with natural breathing, pauses, and emotion.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <div class="feature-title">30+ Languages</div>
+      <div class="feature-desc">Generate speech in over 30 languages with native accents and dialects. Full SSML support for fine-grained control.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Sub-second Latency</div>
+      <div class="feature-desc">Our streaming API delivers the first audio chunk in under 300ms — fast enough for real-time conversational applications.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎭</div>
+      <div class="feature-title">Emotion Controls</div>
+      <div class="feature-desc">Adjust tone, emotion, pacing, pitch, and stability with precision controls that give you a professional sound studio in the cloud.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <div class="feature-title">REST API + SDKs</div>
+      <div class="feature-desc">Drop in to any app with our REST API and official SDKs for JavaScript, Python, and Go. Webhooks for async workflows.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Enterprise Security</div>
+      <div class="feature-desc">SOC 2 Type II certified. GDPR compliant. Data encryption at rest and in transit. Private cloud deployments available.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     VOICE EXAMPLES
+════════════════════════════════════ -->
+<section class="section" id="voices" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+  <div class="section-center">
+    <div class="section-eyebrow"><span class="eyebrow">Voice Library</span></div>
+    <h2 class="section-headline">120+ premium voices</h2>
+    <p class="section-sub">Browse our curated library of AI voices. Every voice is crafted for a specific use case.</p>
+  </div>
+
+  <div class="content-grid-4" style="margin-top:48px;">
+    <!-- Voice preview cards -->
+    <div class="card" style="padding:20px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:40px;height:40px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👩</div>
+        <div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--text-primary);">Aria</div>
+          <div style="font-size:0.75rem;color:var(--text-tertiary);">American English · Female</div>
+        </div>
+      </div>
+      <div class="waveform" style="height:36px;margin-bottom:12px;">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <span class="badge badge-violet">Narrative</span>
+        <span class="badge badge-blue">Podcast</span>
+      </div>
+    </div>
+
+    <div class="card" style="padding:20px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:40px;height:40px;background:linear-gradient(135deg,#06b6d4,#3b82f6);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👨</div>
+        <div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--text-primary);">Atlas</div>
+          <div style="font-size:0.75rem;color:var(--text-tertiary);">British English · Male</div>
+        </div>
+      </div>
+      <div class="waveform" style="height:36px;margin-bottom:12px;">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <span class="badge badge-green">Professional</span>
+        <span class="badge badge-blue">Corporate</span>
+      </div>
+    </div>
+
+    <div class="card" style="padding:20px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:40px;height:40px;background:linear-gradient(135deg,#f59e0b,#ef4444);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👩</div>
+        <div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--text-primary);">Nova</div>
+          <div style="font-size:0.75rem;color:var(--text-tertiary);">Australian · Female</div>
+        </div>
+      </div>
+      <div class="waveform" style="height:36px;margin-bottom:12px;">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <span class="badge badge-gold">Energetic</span>
+        <span class="badge badge-blue">Marketing</span>
+      </div>
+    </div>
+
+    <div class="card" style="padding:20px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:40px;height:40px;background:linear-gradient(135deg,#10b981,#6366f1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👨</div>
+        <div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--text-primary);">Echo</div>
+          <div style="font-size:0.75rem;color:var(--text-tertiary);">American English · Male</div>
+        </div>
+      </div>
+      <div class="waveform" style="height:36px;margin-bottom:12px;">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <span class="badge badge-violet">Deep</span>
+        <span class="badge badge-blue">News</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:36px;">
+    <a href="register.html" class="btn btn-secondary">Browse all 120 voices →</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     API SHOWCASE
+════════════════════════════════════ -->
+<section class="section" id="api">
+  <div class="api-showcase">
+    <div>
+      <div class="section-eyebrow" style="margin-bottom:16px;"><span class="eyebrow">Developer API</span></div>
+      <h2 class="section-headline" style="text-align:left;">Built for developers.<br>Loved by everyone.</h2>
+      <p class="t-body-lg" style="margin: 16px 0 28px;">A dead-simple REST API with SDKs in every major language. Integrate studio-quality TTS in under 5 minutes.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+        <li style="display:flex;align-items:center;gap:10px;font-size:0.9rem;color:var(--text-secondary);">
+          <span style="color:var(--success);">✓</span> REST API with streaming support
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:0.9rem;color:var(--text-secondary);">
+          <span style="color:var(--success);">✓</span> JavaScript, Python & Go SDKs
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:0.9rem;color:var(--text-secondary);">
+          <span style="color:var(--success);">✓</span> Webhooks for async workflows
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:0.9rem;color:var(--text-secondary);">
+          <span style="color:var(--success);">✓</span> 99.9% uptime SLA
+        </li>
+      </ul>
+      <a href="register.html" class="btn btn-primary">Get API key →</a>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <div class="demo-dots">
+          <div class="demo-dot r"></div><div class="demo-dot y"></div><div class="demo-dot g"></div>
+        </div>
+        <span class="code-lang">JavaScript</span>
+      </div>
+      <div class="code-body">
+<span class="cm">// Install: npm install voiceforge-sdk</span>
+<br><br>
+<span class="kw">import</span> <span class="str">VoiceForge</span> <span class="kw">from</span> <span class="str">'voiceforge-sdk'</span><span class="">;</span>
+<br><br>
+<span class="kw">const</span> <span class="">client</span> <span class="">=</span> <span class="kw">new</span> <span class="fn">VoiceForge</span><span class="">({</span>
+<br>&nbsp;&nbsp;<span class="">apiKey</span><span class="">:</span> <span class="str">'vf_live_...'</span><span class="">,</span>
+<br><span class="">});</span>
+<br><br>
+<span class="kw">const</span> <span class="">audio</span> <span class="">=</span> <span class="kw">await</span> <span class="">client</span><span class="">.</span><span class="fn">speech</span><span class="">.</span><span class="fn">generate</span><span class="">({</span>
+<br>&nbsp;&nbsp;<span class="">text</span><span class="">:</span> <span class="str">"Hello, world!"</span><span class="">,</span>
+<br>&nbsp;&nbsp;<span class="">voice</span><span class="">:</span> <span class="str">"aria"</span><span class="">,</span>
+<br>&nbsp;&nbsp;<span class="">model</span><span class="">:</span> <span class="str">"vf-neural-v2"</span><span class="">,</span>
+<br>&nbsp;&nbsp;<span class="">speed</span><span class="">:</span> <span class="num">1.0</span><span class="">,</span>
+<br><span class="">});</span>
+<br><br>
+<span class="cm">// Stream directly to browser</span>
+<br>
+<span class="kw">await</span> <span class="">audio</span><span class="">.</span><span class="fn">stream</span><span class="">(</span><span class="">outputStream</span><span class="">);</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════ -->
+<section class="section" style="border-top:1px solid var(--border-subtle);">
+  <div class="section-center">
+    <div class="section-eyebrow"><span class="eyebrow">Testimonials</span></div>
+    <h2 class="section-headline">Loved by 50,000+ users</h2>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-quote">"VoiceForge completely replaced our $8K/month studio recording budget. The Aria voice is genuinely indistinguishable from a human narrator."</div>
+      <div class="t-author">
+        <div class="t-avatar">JL</div>
+      </div>
+    </div>
+    <div class="testimonial-card" style="border-color:var(--border-blue);">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-quote">"We integrated the API in one afternoon. Sub-300ms latency means we can power real-time voice assistants without any perceived lag."</div>
+      <div class="t-author">
+        <div class="t-avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6);">SR</div>
+        <div>
+          <div class="t-name">Sam Rivera</div>
+          <div class="t-role">CTO, Intercom</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-quote">"The emotion controls are a game-changer. I can produce an entire audiobook with perfect pacing and tone variation — in minutes."</div>
+      <div class="t-author">
+        <div class="t-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">TM</div>
+        <div>
+          <div class="t-name">Taylor Morgan</div>
+          <div class="t-role">Indie Author & Podcaster</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     PRICING
+════════════════════════════════════ -->
+<section class="section" id="pricing" style="border-top:1px solid var(--border-subtle);">
+  <div class="section-center">
+    <div class="section-eyebrow"><span class="eyebrow">Pricing</span></div>
+    <h2 class="section-headline">Simple, transparent pricing</h2>
+    <p class="section-sub">Start free. Scale as you grow. No hidden fees.</p>
+    <div class="pricing-toggle" style="display:flex;margin:24px auto 0;">
+      <button class="toggle-opt active" onclick="setPeriod(this,'monthly')">Monthly</button>
+      <button class="toggle-opt" onclick="setPeriod(this,'yearly')">
+        Yearly <span class="save-badge">Save 20%</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="pricing-grid">
+    <!-- Starter -->
+    <div class="pricing-card">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price"><sup>$</sup><span class="price-val">0</span></div>
+      <div class="plan-period">Free forever</div>
+      <div class="plan-desc">Perfect for trying VoiceForge and small personal projects.</div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> 10,000 characters / month</li>
+        <li><span class="check">✓</span> 10 standard voices</li>
+        <li><span class="check">✓</span> MP3 export</li>
+        <li><span class="check">✓</span> Basic API access</li>
+        <li style="opacity:0.4;"><span class="check">✗</span> Voice cloning</li>
+        <li style="opacity:0.4;"><span class="check">✗</span> Commercial use</li>
+      </ul>
+      <a href="register.html" class="btn btn-secondary btn-full">Get started free</a>
+    </div>
+
+    <!-- Pro (popular) -->
+    <div class="pricing-card popular">
+      <div class="popular-tag">Most Popular</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price"><sup>$</sup><span class="price-val" data-monthly="29" data-yearly="23">29</span></div>
+      <div class="plan-period">per month</div>
+      <div class="plan-desc">For creators and professionals who need high volume and premium quality.</div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> 500,000 characters / month</li>
+        <li><span class="check">✓</span> All 120+ voices</li>
+        <li><span class="check">✓</span> MP3, WAV, OGG export</li>
+        <li><span class="check">✓</span> Full API access</li>
+        <li><span class="check">✓</span> 3 voice clones</li>
+        <li><span class="check">✓</span> Commercial license</li>
+      </ul>
+      <a href="register.html" class="btn btn-primary btn-full">Start Pro trial</a>
+    </div>
+
+    <!-- Enterprise -->
+    <div class="pricing-card">
+      <div class="plan-name">Enterprise</div>
+      <div class="plan-price" style="font-size:1.8rem;">Custom</div>
+      <div class="plan-period">volume pricing</div>
+      <div class="plan-desc">For teams and companies with advanced needs and compliance requirements.</div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Unlimited characters</li>
+        <li><span class="check">✓</span> All voices + custom models</li>
+        <li><span class="check">✓</span> Unlimited voice clones</li>
+        <li><span class="check">✓</span> SLA + dedicated support</li>
+        <li><span class="check">✓</span> SOC 2 / GDPR compliance</li>
+        <li><span class="check">✓</span> Private cloud deployment</li>
+      </ul>
+      <a href="mailto:enterprise@voiceforge.ai" class="btn btn-ghost btn-full">Contact sales →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     FAQ
+════════════════════════════════════ -->
+<section class="section" id="faq">
+  <div class="section-center">
+    <div class="section-eyebrow"><span class="eyebrow">FAQ</span></div>
+    <h2 class="section-headline">Common questions</h2>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How realistic are VoiceForge voices?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Our neural voices are trained on thousands of hours of professionally recorded speech. In blind listening tests, listeners identify our AI voices as human over 90% of the time. We continuously improve models with every release.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Can I use generated audio commercially?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Yes, all Pro and Enterprise plans include a full commercial license. You can use generated audio in YouTube videos, podcasts, ads, apps, and products without attribution.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What is the API rate limit?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Starter: 5 requests/min. Pro: 50 requests/min. Enterprise: custom limits up to thousands of concurrent requests. Contact us for high-throughput needs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Is my data used to train models?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">No. Your text inputs and generated audio are never used to train or improve our models. Enterprise plans include zero-data-retention options.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Can I cancel anytime?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Absolutely. You can cancel your subscription at any time from your billing settings. You'll keep access until the end of your billing period. No questions asked.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     FINAL CTA
+════════════════════════════════════ -->
+<div class="final-cta">
+  <div class="final-cta-content">
+    <div class="section-eyebrow" style="display:inline-flex;margin-bottom:20px;"><span class="eyebrow">Get started today</span></div>
+    <h2 class="t-h1" style="margin-bottom:16px;color:var(--text-primary);">Your text deserves<br>a great voice.</h2>
+    <p class="t-body-lg" style="margin-bottom:36px;">Join 50,000+ creators using VoiceForge. Start free, upgrade when you need more.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="register.html" class="btn btn-primary btn-lg">Start for free →</a>
+      <a href="#demo" class="btn btn-secondary btn-lg">See a live demo</a>
+    </div>
+    <div style="margin-top:20px;font-size:0.8rem;color:var(--text-tertiary);">No credit card required · Free forever plan · Cancel anytime</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer class="landing-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="margin-bottom:8px;display:inline-flex;">
+        <div class="logo-icon" style="width:26px;height:26px;font-size:12px;border-radius:6px;">🎙</div>
+        <span class="logo-text" style="font-size:0.9rem;">Voice<span>Forge</span></span>
+      </a>
+      <p class="footer-desc">The AI-powered text-to-speech platform built for the next generation of creators and developers.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="#">Features</a>
+      <a href="#">Voices</a>
+      <a href="#">API</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#">Changelog</a>
+    </div>
+    <div class="footer-col">
+      <h4>Developers</h4>
+      <a href="#">Documentation</a>
+      <a href="#">API Reference</a>
+      <a href="#">SDKs</a>
+      <a href="#">Status</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About</a>
+      <a href="#">Blog</a>
+      <a href="#">Careers</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 VoiceForge, Inc. All rights reserved.</span>
+    <span>Built with ❤ for creators worldwide</span>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+// Voice selection
+let selectedVoice = 'aria';
+function selectVoice(el, voice) {
+  document.querySelectorAll('.voice-chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedVoice = voice;
+}
+
+// Demo conversion (calls real API)
+async function demoConvert() {
+  const text = document.getElementById('demoText').value.trim();
+  if (!text) { showToast('Please enter some text.', 'error'); return; }
+  const btn = document.getElementById('demoBtn');
+  btn.classList.add('loading');
+  try {
+    const token = localStorage.getItem('token');
+    const res = await fetch('http://localhost:8000/speech/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+      body: JSON.stringify({ text })
+    });
+    if (!res.ok) throw new Error();
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const audio = document.getElementById('demoAudio');
+    audio.src = url;
+    document.getElementById('demoWaveform').classList.add('visible');
+    audio.play();
+    showToast('Audio generated!', 'success');
+  } catch {
+    showToast('Please sign in to generate audio.', 'error');
+  } finally {
+    btn.classList.remove('loading');
+  }
+}
+
+// Pricing toggle
+function setPeriod(btn, period) {
+  document.querySelectorAll('.toggle-opt').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.price-val[data-monthly]').forEach(el => {
+    el.textContent = period === 'yearly' ? el.dataset.yearly : el.dataset.monthly;
+  });
+}
+
+// FAQ accordion
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Toast
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.innerHTML = (type === 'success' ? '✓ ' : type === 'error' ? '⚠ ' : '') + msg;
+  t.className = 'show' + (type ? ' ' + type : '');
+  setTimeout(() => t.className = '', 3000);
+}
+
+// Animate waveforms on hover
+document.querySelectorAll('.waveform').forEach(wf => {
+  wf.addEventListener('mouseenter', () => wf.classList.add('active'));
+  wf.addEventListener('mouseleave', () => wf.classList.remove('active'));
+});
+</script>
+</body>
+</html>

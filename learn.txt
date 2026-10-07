@@ -1,0 +1,17 @@
+uvicorn backend.app:app
+here uvicorn is a web server 
+backend.app defines the app.py file in backend folder
+:app define the variable defined in app.py file for Fastapi
+
+
+run command 
+backend
+uvicorn backend.app:app --reload
+
+frontend
+move to directory frontend
+run python -m http.server 5500
+
+Running Application will be on
+
+http://localhost:5500

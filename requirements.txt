@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+gtts
+python-docx
+
+pymongo
+python-dotenv
+bcrypt
+PyJWT
+python-multipart
+email-validator
+pydub
+edge-tts

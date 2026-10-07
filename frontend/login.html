@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — VoiceForge</title>
+  <link rel="stylesheet" href="design-system.css">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+<div class="auth-page">
+
+  <!-- Left panel — social proof / branding -->
+  <div class="auth-left">
+    <div class="auth-left-content">
+      <a href="index.html" class="nav-logo" style="margin-bottom:48px;display:inline-flex;">
+        <div class="logo-icon">🎙</div>
+        <span class="logo-text" style="font-size:1rem;">Voice<span>Forge</span></span>
+      </a>
+
+      <div class="big-quote">
+        "VoiceForge replaced our $8K/month recording studio in a single afternoon."
+      </div>
+      <div class="quote-attr">
+        — <strong>Jamie Liu</strong>, Head of Content at Loom
+      </div>
+
+      <div style="margin-top:48px;display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.875rem;color:var(--text-secondary);">
+          <span style="color:var(--success);font-size:1rem;">✓</span>
+          Studio-quality AI voices in 30+ languages
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.875rem;color:var(--text-secondary);">
+          <span style="color:var(--success);font-size:1rem;">✓</span>
+          Sub-300ms streaming API latency
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.875rem;color:var(--text-secondary);">
+          <span style="color:var(--success);font-size:1rem;">✓</span>
+          SOC 2 certified. GDPR compliant.
+        </div>
+      </div>
+
+      <div style="margin-top:48px;display:flex;align-items:center;gap:16px;">
+        <div class="sp-avatars">
+          <div class="sp-avatar">JK</div><div class="sp-avatar">SR</div><div class="sp-avatar">TM</div><div class="sp-avatar">AL</div>
+        </div>
+        <div>
+          <div class="sp-stars">★★★★★</div>
+          <div class="sp-text" style="font-size:0.78rem;"><strong style="color:var(--text-secondary);">50,000+</strong> teams and creators</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right panel — sign in form -->
+  <div class="auth-right">
+    <div class="auth-panel">
+
+      <div class="auth-header-mini">
+        <div class="logo-icon" style="width:28px;height:28px;font-size:13px;border-radius:7px;">🎙</div>
+        <span class="logo-text" style="font-size:0.9rem;">Voice<span>Forge</span></span>
+      </div>
+
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-sub">Sign in to your account to continue.</p>
+
+      <div class="auth-field">
+        <label class="input-label" for="email">Email address</label>
+        <input class="input" type="email" id="email" placeholder="you@company.com" autocomplete="email">
+      </div>
+
+      <div class="auth-field">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <label class="input-label" for="password" style="margin-bottom:0;">Password</label>
+          <a href="#" style="font-size:0.78rem;color:var(--brand-indigo);text-decoration:none;">Forgot password?</a>
+        </div>
+        <input class="input" type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+      </div>
+
+      <button class="btn btn-primary btn-full btn-lg" style="margin-top:6px;" id="loginBtn" onclick="doLogin()">
+        <span class="btn-label">Sign in</span>
+        <span class="spinner"></span>
+      </button>
+
+      <div class="auth-divider">
+        <span>or continue with</span>
+      </div>
+
+      <button onclick="googleSignIn()" class="btn btn-secondary btn-full" style="gap:10px;justify-content:center;padding:12px;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
+          <path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/>
+          <path d="M3.964 10.707A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.707V4.961H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.039l3.007-2.332z" fill="#FBBC05"/>
+          <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.96L3.964 7.294C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <p class="auth-footer-link">
+        Don't have an account? <a href="register.html">Create one free</a>
+      </p>
+
+    </div>
+  </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="auth.js"></script>
+<script>
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.innerHTML = (type === 'error' ? '⚠ ' : type === 'success' ? '✓ ' : '') + msg;
+  t.className = 'show' + (type ? ' '+type : '');
+  setTimeout(() => t.className = '', 3200);
+}
+
+async function doLogin() {
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  if (!email || !password) { showToast('Please fill in all fields.', 'error'); return; }
+  const btn = document.getElementById('loginBtn');
+  btn.classList.add('loading');
+  try {
+    await login(); // from auth.js
+  } catch {
+    showToast('Login failed. Check your credentials.', 'error');
+  } finally {
+    btn.classList.remove('loading');
+  }
+}
+
+// Auto-handle redirect on page load
+handleGoogleRedirect();
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+});
+</script>
+</body>
+</html>
