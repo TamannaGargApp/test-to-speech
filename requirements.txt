@@ -11,3 +11,5 @@ python-multipart
 email-validator
 pydub
 edge-tts
+
+faster-whisper "av<19"

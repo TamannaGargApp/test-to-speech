@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.routes.auth_routes import router as auth_router
 from backend.routes.speech_routes import router as speech_router
 from backend.routes.history_routes import router as history_router
+from backend.routes.stt_routes import router as stt_router
 
 app = FastAPI(
     title="Text To Speech API"
@@ -27,4 +28,8 @@ app.include_router(
 
 app.include_router(
     history_router
+)
+
+app.include_router(
+    stt_router
 )

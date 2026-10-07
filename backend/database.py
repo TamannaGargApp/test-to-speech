@@ -17,3 +17,5 @@ db = client[
 users_collection = db["users"]
 
 audio_collection = db["audio_history"]
+
+transcript_collection = db["transcripts"]
