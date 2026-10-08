@@ -7,19 +7,65 @@ A full-stack voice platform built with FastAPI, MongoDB, Edge TTS, Whisper, and 
 
 ---
 
+## ✨ What's New
+
+### Landing page
+- The headline types out rotating words ("Give your stories / podcasts / lessons a voice").
+- Animated sound rings behind the hero, a scroll progress bar, and a navigation bar that darkens as you scroll.
+- The live demo has example scripts (Welcome, Story, Ad, News), a character counter and an equalizer that moves while audio plays.
+- Visitors who aren't signed in hear a preview in the browser's built-in voice, with a link to sign up for the neural voices. Signed-in users get the real voice through `/api/speech/`.
+- New sections: an animated stats strip and a three-step "How it works".
+- Voice cards sit in a grid, and each has a button that picks that voice in the demo and scrolls up to it.
+- Logos scroll in a marquee, cards fade in as you scroll, and feature cards have a hover spotlight.
+- All motion turns off when the system's reduce-motion setting is on.
+
+### Dashboard
+- A welcome banner with an animated soundwave graphic and shortcuts to Studio and Speech to Text.
+- Stat cards are calculated from your real history: generations this month, characters this month, total audio length (estimated) and favourite voice.
+- An activity chart shows generations per day for the last 14 days. Hover a bar to see that day's count.
+- A monthly quota ring shows how much of the 10,000-character allowance is used. The sidebar bar and the "characters left" pill use the same count.
+- Quick Generate offers 15 voices across several languages and sends the voice you pick.
+
+### Studio
+- The **Generate Speech** button is pinned to the bottom of the control panel, so it is always visible without scrolling.
+- **Ctrl+Enter** (Cmd+Enter on Mac) generates speech from anywhere on the page.
+- Fixed: the Speed and Pitch sliders now change the audio. Before, they were never sent to the backend.
+- Fixed: the "pause" button inserts a plain pause (`...`) instead of an SSML tag that was read out loud. The "emphasis" button was removed for the same reason.
+
+### Voice cloning is hidden
+- Cloning has been removed from the sidebar of every page, from the dashboard and from the landing-page pricing.
+- `frontend/cloning.html` is still in the project, so the feature can be brought back later by re-adding its sidebar link.
+
+---
+
+## 🎛 What the Studio Does
+
+Studio is the long-form text-to-speech editor:
+
+1. Write or paste a script. Studio shows live character and word counts and an estimated duration.
+2. Pick a language and voice (20 voices in English, Hindi, Spanish, French, German and Japanese). You can search the list or filter it by male or female voices.
+3. Adjust **Speed** (0.5× to 2×) and **Pitch**.
+4. Choose **MP3** or **WAV**, then click **Generate Speech** or press Ctrl+Enter.
+5. Play the result and click **Export** to download it. Every clip is also saved to History.
+
+Text sent from the Speech to Text page with **Open in Studio** lands in the editor automatically.
+
+> Note: the **Emotion** and **Stability** controls are not used by the backend yet, so they don't change the audio.
+
+---
+
 ## 📸 Pages
 
 | Page | URL | Description |
 |------|-----|-------------|
-| Landing | `/index.html` | Marketing page with live demo |
+| Landing | `/index.html` | Marketing page with an interactive live demo |
 | Login | `/login.html` | Sign in with email or Google |
 | Register | `/register.html` | Create account (email or Google) |
-| Dashboard | `/dashboard.html` | Overview, stats, quick generate |
-| Studio | `/studio.html` | Full text-to-speech editor with all controls |
+| Dashboard | `/dashboard.html` | Welcome banner, real usage stats, activity chart, quota ring, quick generate |
+| Studio | `/studio.html` | Full text-to-speech editor with a pinned Generate button |
 | Speech to Text | `/transcribe.html` | Record or upload audio and get text |
 | History | `/history.html` | Past generations with search |
 | Voices | `/voices.html` | Browse and preview all voices |
-| Voice Cloning | `/cloning.html` | Clone any voice (Pro feature, UI only) |
 | API | `/api.html` | API key, docs, code examples |
 
 ---
@@ -75,9 +121,11 @@ VoiceForge/
 │   ├── transcribe.html         # Speech to text
 │   ├── history.html            # Generation history
 │   ├── voices.html             # Voice library
-│   ├── cloning.html            # Voice cloning
+│   ├── cloning.html            # Voice cloning (hidden, not linked anywhere)
 │   ├── api.html                # API reference
-│   └── auth.js                 # Login, register, Google sign-in, logout
+│   ├── auth.js                 # Login, register, Google sign-in, logout
+│   ├── ui.css                  # Shared UI polish: focus states, motion, mobile layout
+│   └── ui.js                   # Mobile menu drawer, sidebar links, greeting
 │
 ├── desktop/
 │   └── tkinter_app.py          # Minimal desktop client for the API

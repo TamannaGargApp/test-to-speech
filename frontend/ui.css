@@ -1,0 +1,157 @@
+/* ═══════════════════════════════════════════════════════════════
+   VoiceForge — shared UI polish
+   Loaded after each page's own styles. Adds consistent focus states,
+   motion, depth, and a mobile navigation drawer for the app pages.
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Brand logo (landing, login, register; :where keeps app-page styles in charge) ── */
+.nav-logo { text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+:where(.logo-icon) {
+  width: 32px; height: 32px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; border-radius: 9px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, .35);
+}
+:where(.logo-text) { font-weight: 800; letter-spacing: -.02em; color: #f1f5f9; font-size: 1rem; }
+:where(.logo-text) span { color: #818cf8; }
+
+/* ── Accessibility: visible keyboard focus, no mouse-click outlines ── */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid #818cf8;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+input:focus-visible, textarea:focus-visible, select:focus-visible { outline-offset: 0; }
+::selection { background: rgba(99, 102, 241, .35); color: #fff; }
+
+/* ── Smoother interactions ── */
+button, .btn-primary, .btn-sec, .btn-ghost, .nav-item, .voice-opt, .fmt-opt, .tb-btn, a { -webkit-tap-highlight-color: transparent; }
+button:not(:disabled):active, .btn-primary:active, .btn-sec:not(:disabled):active, .gen-btn:active { transform: scale(.97); }
+input[type=range]::-webkit-slider-thumb { transition: transform .15s; }
+input[type=range]:hover::-webkit-slider-thumb { transform: scale(1.2); }
+
+/* ── App shell depth ── */
+.main {
+  background:
+    radial-gradient(900px 420px at 70% -120px, rgba(99, 102, 241, .10), transparent 70%),
+    radial-gradient(600px 300px at 0% 100%, rgba(139, 92, 246, .05), transparent 70%),
+    #030712;
+}
+.topbar {
+  background: rgba(10, 15, 30, .82) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative; z-index: 5;
+}
+
+/* Sidebar: accent bar on the active item, softer hover */
+.sb-nav .nav-item { transition: background .15s, color .15s, transform .15s; }
+.sb-nav .nav-item:hover { transform: translateX(2px); }
+.sb-nav .nav-item.active { box-shadow: inset 0 0 18px rgba(99, 102, 241, .08); }
+.sb-nav .nav-item.active::before {
+  content: ''; position: absolute; left: -8px; top: 7px; bottom: 7px; width: 3px;
+  border-radius: 0 3px 3px 0; background: linear-gradient(180deg, #818cf8, #8b5cf6);
+}
+.sb-nav .nav-item.active svg { color: #818cf8; }
+
+/* Surfaces: soft vertical gradient with a top highlight */
+.stat-card, .card, .usage-card, .voice-card, .step-card, .stt-wrap .card {
+  background: linear-gradient(180deg, #131b2f 0%, #0e1526 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+.sb { background: linear-gradient(180deg, #0b1122 0%, #080d1a 100%) !important; }
+
+/* Cards lift slightly on hover */
+.stat-card, .card, .usage-card, .voice-card, .step-card {
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.stat-card:hover, .voice-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -12px rgba(99, 102, 241, .35);
+}
+
+/* Content fades in on load */
+@keyframes vf-fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.page-scroll > *, .stt-wrap > *, .studio-body {
+  animation: vf-fade-up .35s ease both;
+}
+.page-scroll > *:nth-child(2), .stt-wrap > *:nth-child(2) { animation-delay: .04s; }
+.page-scroll > *:nth-child(3), .stt-wrap > *:nth-child(3) { animation-delay: .08s; }
+.page-scroll > *:nth-child(4), .stt-wrap > *:nth-child(4) { animation-delay: .12s; }
+
+/* Toast: icon-like pill with a bit more presence */
+#toast { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); max-width: calc(100vw - 32px); white-space: normal !important; text-align: center; }
+
+/* Thin, visible-on-hover scrollbars */
+* { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .1) transparent; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, .18) !important; }
+
+/* Long tables and wide content never break the layout */
+.grid-2 > *, .studio-body > * { min-width: 0; }
+.card:has(> table), .card:has(.hist-table) { overflow-x: auto; }
+
+/* No sideways page scrolling (100vw includes the scrollbar on Windows) */
+html, body { overflow-x: hidden; }
+.shell { width: 100% !important; max-width: 100vw; }
+
+/* History tables: header labels get breathing room under the card toolbar */
+.hist-table th { padding-top: 12px !important; white-space: nowrap; }
+.hist-table td:first-child, .hist-table th:first-child { width: 44px; }
+button.play-btn { padding: 0; font-family: inherit; line-height: 1; flex-shrink: 0; }
+.play-btn.playing { background: #6366f1 !important; color: #fff !important; border-color: #6366f1 !important; font-size: .6rem !important; }
+
+/* ── Mobile navigation drawer ── */
+.vf-menu-btn {
+  display: none; flex-shrink: 0;
+  width: 36px; height: 36px; margin-right: 2px;
+  align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, .04); border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 9px; color: #e2e8f0; cursor: pointer;
+}
+.vf-overlay {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(3, 7, 18, .6); backdrop-filter: blur(2px);
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+
+@media (max-width: 700px) {
+  .vf-menu-btn { display: inline-flex; }
+
+  .shell .sb {
+    display: flex !important;
+    position: fixed; top: 0; left: 0; bottom: 0; z-index: 100;
+    width: 264px; min-width: 264px;
+    transform: translateX(-100%);
+    transition: transform .28s cubic-bezier(.2, .8, .2, 1);
+    box-shadow: 20px 0 60px rgba(0, 0, 0, .5);
+  }
+  body.vf-nav-open .shell .sb { transform: none; }
+  body.vf-nav-open .vf-overlay { opacity: 1; pointer-events: auto; }
+
+  /* Compact top bar */
+  .topbar { padding: 0 12px !important; gap: 8px !important; }
+  .breadcrumb > *:not(.cur) { display: none; }
+  .breadcrumb .cur { font-weight: 700; }
+  .credits-pill { display: none !important; }
+  .tb-right { gap: 6px !important; }
+  .tb-right .btn-primary, .tb-right .btn-sec, .tb-right .btn-ghost { padding: 7px 10px !important; white-space: nowrap; }
+
+  .hist-text { max-width: 140px !important; }
+  .stats-grid { gap: 10px !important; }
+  .stat-card { padding: 14px !important; }
+  .stat-value { font-size: 1.3rem !important; }
+}
+
+/* Studio: on narrow screens, stack the controls under the editor instead of hiding them */
+@media (max-width: 900px) {
+  .studio-body { display: flex !important; flex-direction: column; overflow-y: auto !important; }
+  .studio-body .editor-side { min-height: 62vh; border-right: none !important; border-bottom: 1px solid rgba(255, 255, 255, .07); flex-shrink: 0; }
+  .studio-body .ctrl-side { display: flex !important; overflow: visible !important; flex-shrink: 0; }
+  .studio-body .toolbar { overflow-x: auto; flex-wrap: nowrap !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

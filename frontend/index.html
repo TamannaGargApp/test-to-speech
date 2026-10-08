@@ -7,11 +7,14 @@
   <meta name="description" content="Transform any text into natural, expressive voice in seconds. Powered by next-generation AI. Used by 50,000+ creators, developers, and enterprises.">
   <link rel="stylesheet" href="design-system.css">
   <link rel="stylesheet" href="landing.css">
+<link rel="stylesheet" href="ui.css">
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- ── Navigation ── -->
-<nav class="landing-nav">
+<nav class="landing-nav" id="landingNav">
   <a href="index.html" class="nav-logo">
     <div class="logo-icon">🎙</div>
     <span class="logo-text">Voice<span>Forge</span></span>
@@ -19,8 +22,8 @@
 
   <div class="nav-links-center">
     <a href="#features">Features</a>
+    <a href="#how">How it works</a>
     <a href="#voices">Voices</a>
-    <a href="#api">API</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
   </div>
@@ -39,6 +42,7 @@
     <div class="hero-bg-glow"></div>
     <div class="hero-bg-glow2"></div>
     <div class="hero-grid"></div>
+    <div class="hero-rings" aria-hidden="true"><span></span><span></span><span></span></div>
   </div>
 
   <div class="hero-content">
@@ -47,7 +51,7 @@
     </div>
 
     <h1 class="hero-headline">
-      Give your words
+      Give your <span class="rotator"><span id="rotWord">words</span><span class="caret" aria-hidden="true"></span></span>
       <span class="accent-line">a voice.</span>
     </h1>
 
@@ -93,7 +97,17 @@
       <span class="demo-title">VoiceForge Studio — Live Preview</span>
     </div>
 
-    <textarea class="demo-textarea" id="demoText" placeholder="Type something and hear it come to life…">Welcome to VoiceForge. The future of text-to-speech is here.</textarea>
+    <div class="demo-examples">
+      <span class="demo-examples-label">Try:</span>
+      <button type="button" class="ex-chip active" onclick="useExample(this,'welcome')">👋 Welcome</button>
+      <button type="button" class="ex-chip" onclick="useExample(this,'story')">📖 Story</button>
+      <button type="button" class="ex-chip" onclick="useExample(this,'ad')">📣 Ad</button>
+      <button type="button" class="ex-chip" onclick="useExample(this,'news')">📰 News</button>
+    </div>
+
+    <textarea class="demo-textarea" id="demoText" maxlength="500" placeholder="Type something and hear it come to life…" oninput="updateDemoCount()">Welcome to VoiceForge. The future of text-to-speech is here.</textarea>
+
+    <div class="demo-eq" id="demoEq" aria-hidden="true"></div>
 
     <div class="demo-footer">
       <div class="demo-voices">
@@ -102,6 +116,7 @@
         <span class="voice-chip" onclick="selectVoice(this, 'echo')">Echo</span>
         <span class="voice-chip" onclick="selectVoice(this, 'atlas')">Atlas</span>
       </div>
+      <span class="demo-count" id="demoCount">0 / 500</span>
       <button class="btn btn-primary btn-sm" onclick="demoConvert()" id="demoBtn">
         <span class="btn-label">▶ Generate</span>
         <span class="spinner"></span>
@@ -111,6 +126,7 @@
     <div class="demo-waveform" id="demoWaveform">
       <audio id="demoAudio" controls></audio>
     </div>
+    <div class="demo-note" id="demoNote"></div>
   </div>
 </section>
 
@@ -119,16 +135,23 @@
 ════════════════════════════════════ -->
 <div class="trusted-section">
   <div class="trusted-label">Trusted by teams at</div>
-  <div class="logos-row">
-    <span class="logo-item">Notion</span>
-    <span class="logo-item">Stripe</span>
-    <span class="logo-item">Linear</span>
-    <span class="logo-item">Vercel</span>
-    <span class="logo-item">Figma</span>
-    <span class="logo-item">Loom</span>
-    <span class="logo-item">Intercom</span>
+  <div class="logos-marquee">
+    <div class="logos-track">
+      <span class="logo-item">Notion</span><span class="logo-item">Stripe</span><span class="logo-item">Linear</span><span class="logo-item">Vercel</span><span class="logo-item">Figma</span><span class="logo-item">Loom</span><span class="logo-item">Intercom</span>
+      <span aria-hidden="true" class="logos-dup"><span class="logo-item">Notion</span><span class="logo-item">Stripe</span><span class="logo-item">Linear</span><span class="logo-item">Vercel</span><span class="logo-item">Figma</span><span class="logo-item">Loom</span><span class="logo-item">Intercom</span></span>
+    </div>
   </div>
 </div>
+
+<!-- ════════════════════════════════════
+     STATS
+════════════════════════════════════ -->
+<section class="stats-strip">
+  <div class="stat"><div class="stat-num"><span data-count="120">0</span>+</div><div class="stat-label">Natural voices</div></div>
+  <div class="stat"><div class="stat-num"><span data-count="30">0</span>+</div><div class="stat-label">Languages</div></div>
+  <div class="stat"><div class="stat-num"><span data-count="50">0</span>K+</div><div class="stat-label">Creators</div></div>
+  <div class="stat"><div class="stat-num"><span data-count="4.9" data-decimals="1">0</span>/5</div><div class="stat-label">Average rating</div></div>
+</section>
 
 <!-- ════════════════════════════════════
      FEATURES
@@ -177,6 +200,38 @@
 </section>
 
 <!-- ════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════ -->
+<section class="section" id="how">
+  <div class="section-center">
+    <div class="section-eyebrow"><span class="eyebrow">How it works</span></div>
+    <h2 class="section-headline">From script to sound<br>in three steps</h2>
+    <p class="section-sub">No recording gear, no retakes. And it works the other way too: drop in audio and get the text back.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-icon">✍️</div>
+      <div class="step-title">Write or paste</div>
+      <div class="step-desc">Drop in a script, a blog post or a lesson. Studio counts words and estimates the length as you type.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-icon">🎚️</div>
+      <div class="step-title">Pick a voice</div>
+      <div class="step-desc">Choose a voice and language, then fine-tune the speed and pitch until it sounds right.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-icon">🎧</div>
+      <div class="step-title">Listen and download</div>
+      <div class="step-desc">Generate, play it back instantly and export MP3 or WAV. Every clip is saved to your history.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
      VOICE EXAMPLES
 ════════════════════════════════════ -->
 <section class="section" id="voices" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
@@ -188,7 +243,7 @@
 
   <div class="content-grid-4" style="margin-top:48px;">
     <!-- Voice preview cards -->
-    <div class="card" style="padding:20px;">
+    <div class="card voice-card" data-voice="aria" style="padding:20px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
         <div style="width:40px;height:40px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👩</div>
         <div>
@@ -205,9 +260,10 @@
         <span class="badge badge-violet">Narrative</span>
         <span class="badge badge-blue">Podcast</span>
       </div>
+      <button type="button" class="try-voice" onclick="tryVoice('aria')">▶ Hear Aria in the demo</button>
     </div>
 
-    <div class="card" style="padding:20px;">
+    <div class="card voice-card" data-voice="atlas" style="padding:20px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
         <div style="width:40px;height:40px;background:linear-gradient(135deg,#06b6d4,#3b82f6);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👨</div>
         <div>
@@ -224,9 +280,10 @@
         <span class="badge badge-green">Professional</span>
         <span class="badge badge-blue">Corporate</span>
       </div>
+      <button type="button" class="try-voice" onclick="tryVoice('atlas')">▶ Hear Atlas in the demo</button>
     </div>
 
-    <div class="card" style="padding:20px;">
+    <div class="card voice-card" data-voice="nova" style="padding:20px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
         <div style="width:40px;height:40px;background:linear-gradient(135deg,#f59e0b,#ef4444);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👩</div>
         <div>
@@ -243,9 +300,10 @@
         <span class="badge badge-gold">Energetic</span>
         <span class="badge badge-blue">Marketing</span>
       </div>
+      <button type="button" class="try-voice" onclick="tryVoice('nova')">▶ Hear Nova in the demo</button>
     </div>
 
-    <div class="card" style="padding:20px;">
+    <div class="card voice-card" data-voice="echo" style="padding:20px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
         <div style="width:40px;height:40px;background:linear-gradient(135deg,#10b981,#6366f1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👨</div>
         <div>
@@ -262,6 +320,7 @@
         <span class="badge badge-violet">Deep</span>
         <span class="badge badge-blue">News</span>
       </div>
+      <button type="button" class="try-voice" onclick="tryVoice('echo')">▶ Hear Echo in the demo</button>
     </div>
   </div>
 
@@ -342,6 +401,10 @@
       <div class="t-quote">"VoiceForge completely replaced our $8K/month studio recording budget. The Aria voice is genuinely indistinguishable from a human narrator."</div>
       <div class="t-author">
         <div class="t-avatar">JL</div>
+        <div>
+          <div class="t-name">Jordan Lee</div>
+          <div class="t-role">Audiobook Producer</div>
+        </div>
       </div>
     </div>
     <div class="testimonial-card" style="border-color:var(--border-blue);">
@@ -397,7 +460,6 @@
         <li><span class="check">✓</span> 10 standard voices</li>
         <li><span class="check">✓</span> MP3 export</li>
         <li><span class="check">✓</span> Basic API access</li>
-        <li style="opacity:0.4;"><span class="check">✗</span> Voice cloning</li>
         <li style="opacity:0.4;"><span class="check">✗</span> Commercial use</li>
       </ul>
       <a href="register.html" class="btn btn-secondary btn-full">Get started free</a>
@@ -415,7 +477,7 @@
         <li><span class="check">✓</span> All 120+ voices</li>
         <li><span class="check">✓</span> MP3, WAV, OGG export</li>
         <li><span class="check">✓</span> Full API access</li>
-        <li><span class="check">✓</span> 3 voice clones</li>
+        <li><span class="check">✓</span> Speech to text</li>
         <li><span class="check">✓</span> Commercial license</li>
       </ul>
       <a href="register.html" class="btn btn-primary btn-full">Start Pro trial</a>
@@ -430,7 +492,7 @@
       <ul class="plan-features">
         <li><span class="check">✓</span> Unlimited characters</li>
         <li><span class="check">✓</span> All voices + custom models</li>
-        <li><span class="check">✓</span> Unlimited voice clones</li>
+        <li><span class="check">✓</span> Priority generation</li>
         <li><span class="check">✓</span> SLA + dedicated support</li>
         <li><span class="check">✓</span> SOC 2 / GDPR compliance</li>
         <li><span class="check">✓</span> Private cloud deployment</li>
@@ -518,9 +580,9 @@
     </div>
     <div class="footer-col">
       <h4>Product</h4>
-      <a href="#">Features</a>
-      <a href="#">Voices</a>
-      <a href="#">API</a>
+      <a href="#features">Features</a>
+      <a href="#voices">Voices</a>
+      <a href="#api">API</a>
       <a href="#pricing">Pricing</a>
       <a href="#">Changelog</a>
     </div>
@@ -549,7 +611,45 @@
 <div id="toast"></div>
 
 <script>
-// Voice selection
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ── Hero: rotating word ──
+(function () {
+  const words = ['words', 'stories', 'lessons', 'podcasts', 'videos', 'ideas'];
+  const el = document.getElementById('rotWord');
+  if (reduceMotion) return;
+  let i = 0;
+  const type = (word, n = 0) => {
+    el.textContent = word.slice(0, n);
+    if (n < word.length) setTimeout(() => type(word, n + 1), 70);
+    else setTimeout(erase, 1900);
+  };
+  const erase = () => {
+    const cur = el.textContent;
+    if (cur.length) { el.textContent = cur.slice(0, -1); setTimeout(erase, 40); }
+    else { i = (i + 1) % words.length; setTimeout(() => type(words[i]), 200); }
+  };
+  setTimeout(erase, 2200);
+})();
+
+// ── Demo ──
+const EXAMPLES = {
+  welcome: 'Welcome to VoiceForge. The future of text-to-speech is here.',
+  story: 'The lighthouse keeper had not seen a ship in forty years. Then, one foggy night, a bell rang out across the water.',
+  ad: 'Tired of recording the same line ten times? Type it once, pick a voice, and you are done. Try VoiceForge free today.',
+  news: 'Good evening. Here are tonight\'s top stories. Scientists have discovered a new species of deep sea octopus off the coast of Australia.',
+};
+
+// Equalizer bars under the text box
+const eq = document.getElementById('demoEq');
+for (let n = 0; n < 48; n++) {
+  const b = document.createElement('i');
+  b.style.setProperty('--h', (20 + Math.round(Math.abs(Math.sin(n * 0.7)) * 80)) + '%');
+  b.style.animationDelay = (n % 8) * 0.09 + 's';
+  eq.appendChild(b);
+}
+const setPlaying = on => eq.classList.toggle('playing', on);
+
 let selectedVoice = 'aria';
 function selectVoice(el, voice) {
   document.querySelectorAll('.voice-chip').forEach(c => c.classList.remove('selected'));
@@ -557,29 +657,75 @@ function selectVoice(el, voice) {
   selectedVoice = voice;
 }
 
-// Demo conversion (calls real API)
+function useExample(btn, key) {
+  document.querySelectorAll('.ex-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  const ta = document.getElementById('demoText');
+  ta.value = EXAMPLES[key];
+  updateDemoCount();
+  ta.focus();
+}
+
+function updateDemoCount() {
+  document.getElementById('demoCount').textContent = document.getElementById('demoText').value.length + ' / 500';
+}
+updateDemoCount();
+
+// Voice library cards jump up to the demo with that voice picked
+function tryVoice(voice) {
+  const chip = [...document.querySelectorAll('.voice-chip')].find(c => c.getAttribute('onclick').includes("'" + voice + "'"));
+  if (chip) selectVoice(chip, voice);
+  document.getElementById('demo').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+  const card = document.getElementById('demo');
+  card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+}
+
+function setNote(html) {
+  const n = document.getElementById('demoNote');
+  n.innerHTML = html;
+  n.classList.toggle('visible', !!html);
+}
+
+// Without an account, speak with the browser's built-in voice so visitors hear something right away
+function browserPreview(text) {
+  if (!('speechSynthesis' in window)) return false;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.onstart = () => setPlaying(true);
+  u.onend = u.onerror = () => setPlaying(false);
+  speechSynthesis.speak(u);
+  setNote('This quick preview uses your browser\'s own voice. <a href="register.html">Create a free account</a> to hear the real neural voices.');
+  return true;
+}
+
 async function demoConvert() {
   const text = document.getElementById('demoText').value.trim();
   if (!text) { showToast('Please enter some text.', 'error'); return; }
+  const token = localStorage.getItem('token');
+  if (!token) {
+    if (!browserPreview(text)) showToast('Sign in to generate audio.', 'error');
+    return;
+  }
   const btn = document.getElementById('demoBtn');
   btn.classList.add('loading');
   try {
-    const token = localStorage.getItem('token');
-    const res = await fetch('http://localhost:8000/speech/', {
+    const res = await fetch('/api/speech/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
-      body: JSON.stringify({ text })
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+      body: JSON.stringify({ text, voice: selectedVoice, format: 'mp3' })
     });
-    if (!res.ok) throw new Error();
-    const blob = await res.blob();
-    const url = URL.createObjectURL(blob);
+    if (res.status === 401) { localStorage.removeItem('token'); browserPreview(text); return; }
+    if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.detail || 'Generation failed.'); }
     const audio = document.getElementById('demoAudio');
-    audio.src = url;
+    audio.src = URL.createObjectURL(await res.blob());
+    audio.onplay = () => setPlaying(true);
+    audio.onpause = audio.onended = () => setPlaying(false);
     document.getElementById('demoWaveform').classList.add('visible');
+    setNote('');
     audio.play();
     showToast('Audio generated!', 'success');
-  } catch {
-    showToast('Please sign in to generate audio.', 'error');
+  } catch (e) {
+    showToast(e.message || 'Generation failed.', 'error');
   } finally {
     btn.classList.remove('loading');
   }
@@ -615,6 +761,58 @@ document.querySelectorAll('.waveform').forEach(wf => {
   wf.addEventListener('mouseenter', () => wf.classList.add('active'));
   wf.addEventListener('mouseleave', () => wf.classList.remove('active'));
 });
+
+// Nav background + reading progress on scroll
+const nav = document.getElementById('landingNav');
+const progress = document.getElementById('scrollProgress');
+function onScroll() {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  progress.style.transform = 'scaleX(' + (max > 0 ? scrollY / max : 0) + ')';
+  nav.classList.toggle('scrolled', scrollY > 20);
+}
+addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// Spotlight that follows the mouse on feature cards
+document.querySelectorAll('.feature-card, .step').forEach(card => {
+  card.addEventListener('pointermove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+
+// Count-up numbers
+function countUp(el) {
+  const target = parseFloat(el.dataset.count), dec = +(el.dataset.decimals || 0);
+  if (reduceMotion) { el.textContent = target.toFixed(dec); return; }
+  const t0 = performance.now(), dur = 1400;
+  const tick = now => {
+    const p = Math.min(1, (now - t0) / dur), eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = (target * eased).toFixed(dec);
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+// Reveal sections as they scroll into view
+const revealEls = document.querySelectorAll('.section-center, .feature-card, .step, .voice-card, .api-showcase > *, .testimonial-card, .pricing-card, .faq-item, .final-cta-content, .stat');
+if ('IntersectionObserver' in window && !reduceMotion) {
+  revealEls.forEach(el => {
+    el.classList.add('reveal');
+    const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+    el.style.transitionDelay = Math.min(sibs.indexOf(el), 5) * 80 + 'ms';
+  });
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    en.target.classList.add('in');
+    en.target.querySelectorAll('[data-count]').forEach(countUp);
+    io.unobserve(en.target);
+  }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('[data-count]').forEach(countUp);
+}
 </script>
 </body>
 </html>

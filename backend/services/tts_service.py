@@ -1,8 +1,9 @@
 import edge_tts
 import asyncio
+import shutil
 import uuid
 import os
-from pydub import AudioSegment
+import wave
 
 OUTPUT_DIR = "generated_audio"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -53,6 +54,36 @@ async def _generate(text: str, voice: str, rate: str, pitch: str, filepath: str)
     )
     await communicate.save(filepath)
 
+def mp3_to_wav(mp3_path: str, wav_path: str):
+    """Convert MP3 to WAV. Uses ffmpeg (via pydub) when installed,
+    otherwise PyAV, which is already installed with faster-whisper."""
+
+    if shutil.which("ffmpeg"):
+        from pydub import AudioSegment
+        AudioSegment.from_mp3(mp3_path).export(wav_path, format="wav")
+        return
+
+    import av
+
+    with av.open(mp3_path) as container:
+        stream = container.streams.audio[0]
+        rate = stream.rate or 24000
+        resampler = av.AudioResampler(format="s16", layout="mono", rate=rate)
+
+        with wave.open(wav_path, "wb") as out:
+            out.setnchannels(1)
+            out.setsampwidth(2)
+            out.setframerate(rate)
+
+            def write(frames):
+                for frame in frames:
+                    out.writeframes(bytes(frame.planes[0])[: frame.samples * 2])
+
+            for frame in container.decode(stream):
+                write(resampler.resample(frame))
+            write(resampler.resample(None))
+
+
 def text_to_speech(
     text: str,
     voice: str = "aria",
@@ -70,8 +101,7 @@ def text_to_speech(
 
     if export_format.lower() == "wav":
         wav_path = os.path.join(OUTPUT_DIR, f"audio_{uid}.wav")
-        audio = AudioSegment.from_mp3(mp3_path)
-        audio.export(wav_path, format="wav")
+        mp3_to_wav(mp3_path, wav_path)
         os.remove(mp3_path)
         return wav_path
 

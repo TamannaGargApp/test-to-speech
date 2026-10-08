@@ -106,6 +106,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#030712;color:#f
 ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px;}
 @media(max-width:700px){.sb{display:none;}.stats-grid{grid-template-columns:1fr;}.page-scroll{padding:16px;}}
 </style>
+<link rel="stylesheet" href="ui.css">
 </head>
 <body>
 <script>if(!localStorage.getItem('token'))window.location.href='login.html';</script>
@@ -151,10 +152,6 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#030712;color:#f
       <a href="voices.html" class="nav-item">
         <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 8.5l2 2 3-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Voices
-      </a>
-      <a href="cloning.html" class="nav-item">
-        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a2.5 2.5 0 012.5 2.5v5a2.5 2.5 0 01-5 0v-5A2.5 2.5 0 018 1z" stroke="currentColor" stroke-width="1.5"/><path d="M3 8a5 5 0 0010 0M8 13v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Voice Cloning
       </a>
     </div>
     <div class="nav-sec">
@@ -289,9 +286,9 @@ function renderRows(items) {
   empty.style.display = 'none';
   tbody.innerHTML = items.map(item => `
     <tr>
-      <td><div class="play-btn">▶</div></td>
+      <td><button class="play-btn" title="Play" onclick="vfPlayHistory(this,'${item.id}')">▶</button></td>
       <td><div class="hist-text" title="${esc(item.text)}">${esc(item.text)}</div></td>
-      <td><span class="badge-v">Aria</span></td>
+      <td><span class="badge-v">${esc(vfVoiceName(item.voice))}</span></td>
       <td style="font-size:.78rem;">${(item.text||'').length} ch</td>
       <td style="font-size:.78rem;white-space:nowrap;">${relTime(item.created_at)}</td>
       <td><button class="btn-copy" onclick="copyTxt(this,'${esc(item.text).replace(/'/g,"\\'")}')">Copy</button></td>
@@ -327,5 +324,6 @@ async function loadHistory() {
 }
 loadHistory();
 </script>
+<script src="ui.js"></script>
 </body>
 </html>

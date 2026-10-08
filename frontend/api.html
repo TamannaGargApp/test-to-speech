@@ -114,6 +114,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#030712;color:#f
 @media(max-width:1000px){.api-stats{grid-template-columns:repeat(2,1fr);}.limits-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:700px){.sb{display:none;}.page-scroll{padding:16px;}.api-stats{grid-template-columns:1fr 1fr;}}
 </style>
+<link rel="stylesheet" href="ui.css">
 </head>
 <body>
 <script>if(!localStorage.getItem('token'))window.location.href='login.html';</script>
@@ -137,7 +138,6 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#030712;color:#f
     <div class="nav-sec">
       <div class="nav-sec-label">Library</div>
       <a href="voices.html" class="nav-item"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 8.5l2 2 3-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Voices</a>
-      <a href="cloning.html" class="nav-item"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1a2.5 2.5 0 012.5 2.5v5a2.5 2.5 0 01-5 0v-5A2.5 2.5 0 018 1z" stroke="currentColor" stroke-width="1.5"/><path d="M3 8a5 5 0 0010 0M8 13v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Voice Cloning</a>
     </div>
     <div class="nav-sec">
       <div class="nav-sec-label">Developer</div>
@@ -402,5 +402,6 @@ function copyCode() {
   navigator.clipboard.writeText(text).then(() => showToast('Code copied!', 'success'));
 }
 </script>
+<script src="ui.js"></script>
 </body>
 </html>

@@ -60,7 +60,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#030712;color:#f
 .breadcrumb .cur{color:#e2e8f0;font-weight:500;}
 .tb-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
 .credits-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:99px;font-size:.75rem;font-weight:600;color:#fbbf24;}
-.btn-primary{padding:8px 16px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border:none;border-radius:8px;color:#fff;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.btn-primary{text-decoration:none;padding:8px 16px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border:none;border-radius:8px;color:#fff;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap;}
 .btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(99,102,241,.4);}
 
 /* Page scroll area */
@@ -79,9 +79,6 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#030712;color:#f
 .stat-card:hover::before{opacity:1;}
 .stat-label{font-size:.67rem;font-weight:700;color:#475569;letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px;}
 .stat-value{font-size:1.6rem;font-weight:800;color:#f1f5f9;letter-spacing:-.03em;line-height:1;margin-bottom:6px;}
-.stat-delta{font-size:.72rem;color:#10b981;}
-.stat-delta.down{color:#ef4444;}
-.stat-icon{position:absolute;right:16px;top:16px;opacity:.06;font-size:2.2rem;}
 
 /* Content grid */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
@@ -159,6 +156,72 @@ audio{width:100%;height:34px;accent-color:#6366f1;}
 .usage-note{font-size:.68rem;color:#334155;margin-top:5px;}
 .usage-note a{color:#818cf8;text-decoration:none;}
 
+
+/* ── Welcome banner ── */
+.hero-banner{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:22px;padding:26px 28px;border-radius:18px;border:1px solid rgba(129,140,248,.25);background:linear-gradient(120deg,#1e1b4b 0%,#312e81 45%,#4c1d95 100%);box-shadow:0 12px 40px rgba(49,46,129,.35);}
+.hb-orb{position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none;}
+.hb-orb1{width:260px;height:260px;background:rgba(129,140,248,.35);top:-120px;right:18%;animation:orb 9s ease-in-out infinite alternate;}
+.hb-orb2{width:200px;height:200px;background:rgba(236,72,153,.22);bottom:-110px;left:30%;animation:orb 11s ease-in-out infinite alternate-reverse;}
+@keyframes orb{to{transform:translate(40px,20px);}}
+.hb-text{position:relative;z-index:1;}
+.hb-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#c7d2fe;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:4px 11px;border-radius:99px;margin-bottom:12px;}
+.hb-dot{width:6px;height:6px;border-radius:50%;background:#34d399;box-shadow:0 0 8px #34d399;}
+.hero-banner .page-title{font-size:1.7rem;font-weight:800;letter-spacing:-.03em;color:#fff;margin-bottom:4px;}
+.hero-banner .page-sub{color:#c7d2fe;font-size:.9rem;}
+.hb-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+.hb-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:10px;font-size:.82rem;font-weight:700;text-decoration:none;color:#e0e7ff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);transition:background .15s,transform .15s;}
+.hb-btn svg{width:15px;height:15px;}
+.hb-btn:hover{background:rgba(255,255,255,.16);transform:translateY(-1px);}
+.hb-btn-main{background:#fff;color:#312e81;border-color:#fff;}
+.hb-btn-main:hover{background:#e0e7ff;}
+.hb-wave{position:relative;z-index:1;width:230px;flex-shrink:0;}
+.hb-wave rect{transform-box:fill-box;transform-origin:center;animation:hbbar 1.6s ease-in-out infinite;}
+@keyframes hbbar{0%,100%{transform:scaleY(.45);}50%{transform:scaleY(1);}}
+.hb-ring{fill:none;stroke:rgba(255,255,255,.12);stroke-width:1;transform-origin:105px 70px;animation:hbring 4s ease-in-out infinite;}
+.hb-ring2{stroke:rgba(255,255,255,.2);animation-delay:-2s;}
+@keyframes hbring{0%,100%{transform:scale(.95);opacity:.6;}50%{transform:scale(1.05);opacity:1;}}
+
+/* ── Stat cards ── */
+.stat-ic{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.stat-ic svg{width:19px;height:19px;}
+.ic-indigo{background:rgba(99,102,241,.15);color:#a5b4fc;box-shadow:inset 0 0 0 1px rgba(99,102,241,.3);}
+.ic-violet{background:rgba(168,85,247,.15);color:#d8b4fe;box-shadow:inset 0 0 0 1px rgba(168,85,247,.3);}
+.ic-cyan{background:rgba(6,182,212,.13);color:#67e8f9;box-shadow:inset 0 0 0 1px rgba(6,182,212,.3);}
+.ic-pink{background:rgba(236,72,153,.13);color:#f9a8d4;box-shadow:inset 0 0 0 1px rgba(236,72,153,.3);}
+.stat-card:hover{transform:translateY(-2px);}
+.stat-card{transition:border-color .2s,transform .2s;}
+.stat-sub{font-size:.72rem;color:#64748b;}
+
+/* ── Activity chart ── */
+.grid-activity{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:22px;}
+.sec-hint{font-size:.75rem;font-weight:500;color:#64748b;}
+.card-body{position:relative;}
+.chart{height:170px;display:flex;align-items:flex-end;gap:6px;padding-top:8px;border-bottom:1px solid rgba(255,255,255,.08);position:relative;}
+.chart-col{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;cursor:default;position:relative;}
+.chart-bar{width:100%;max-width:26px;min-height:3px;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#818cf8,#6366f1);transition:filter .15s,height .6s cubic-bezier(.16,1,.3,1);}
+.chart-bar.zero{background:rgba(255,255,255,.07);}
+.chart-col:hover .chart-bar{filter:brightness(1.25);}
+.chart-x{display:flex;gap:6px;margin-top:7px;}
+.chart-x span{flex:1;text-align:center;font-size:.62rem;color:#475569;}
+.chart-tip{position:absolute;pointer-events:none;opacity:0;transform:translate(-50%,-6px);background:#1e2a42;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:6px 10px;font-size:.72rem;color:#e2e8f0;white-space:nowrap;transition:opacity .12s;box-shadow:0 6px 20px rgba(0,0,0,.4);}
+.chart-tip.show{opacity:1;}
+.chart-tip b{color:#fff;}
+
+/* ── Quota ring ── */
+.usage-ring-card{display:flex;flex-direction:column;}
+.ring-wrap{position:relative;width:150px;height:150px;margin:6px auto 10px;}
+.ring{width:100%;height:100%;transform:rotate(-90deg);}
+.ring-track{fill:none;stroke:rgba(255,255,255,.06);stroke-width:10;}
+.ring-fill{fill:none;stroke:url(#ringg);stroke-width:10;stroke-linecap:round;stroke-dasharray:314.16;stroke-dashoffset:314.16;transition:stroke-dashoffset 1.2s cubic-bezier(.16,1,.3,1);filter:drop-shadow(0 0 6px rgba(129,140,248,.5));}
+.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ring-pct{font-size:1.6rem;font-weight:800;letter-spacing:-.03em;color:#f1f5f9;}
+.ring-lbl{font-size:.7rem;color:#64748b;text-transform:uppercase;letter-spacing:.08em;}
+.ring-legend{text-align:center;font-size:.78rem;color:#94a3b8;}
+
+@media(max-width:1100px){.grid-activity{grid-template-columns:1fr;}}
+@media(max-width:700px){.hb-wave{display:none;}.hero-banner{padding:22px;}}
+@media(prefers-reduced-motion:reduce){.hb-orb,.hb-wave rect,.hb-ring{animation:none;}}
+
 /* Skeleton */
 .sk{background:linear-gradient(90deg,#111827 25%,#1a2236 50%,#111827 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px;}
 @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
@@ -175,6 +238,7 @@ audio{width:100%;height:34px;accent-color:#6366f1;}
 @media(max-width:1100px){.stats-grid{grid-template-columns:repeat(2,1fr);}.grid-2{grid-template-columns:1fr;}}
 @media(max-width:700px){.sb{display:none;}.stats-grid{grid-template-columns:1fr 1fr;}.page-scroll{padding:16px;}}
 </style>
+<link rel="stylesheet" href="ui.css">
 </head>
 <body>
 
@@ -223,10 +287,6 @@ audio{width:100%;height:34px;accent-color:#6366f1;}
         <svg viewBox="0 0 16 16" fill="none"><path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 8.5l2 2 3-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Voices
       </a>
-      <a href="cloning.html" class="nav-item">
-        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a2.5 2.5 0 012.5 2.5v5a2.5 2.5 0 01-5 0v-5A2.5 2.5 0 018 1z" stroke="currentColor" stroke-width="1.5"/><path d="M3 8a5 5 0 0010 0M8 13v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Voice Cloning
-      </a>
     </div>
     <div class="nav-sec">
       <div class="nav-sec-label">Developer</div>
@@ -243,8 +303,8 @@ audio{width:100%;height:34px;accent-color:#6366f1;}
         <span class="credits-label">Characters</span>
         <span class="badge-gold">Free</span>
       </div>
-      <div class="bar-track"><div class="bar-fill" style="width:34%"></div></div>
-      <div class="bar-labels"><span>3,400 used</span><span>10,000</span></div>
+      <div class="bar-track"><div class="bar-fill" id="sbBar" style="width:0%"></div></div>
+      <div class="bar-labels"><span id="sbUsed">0 used</span><span>10,000</span></div>
       <a href="#" class="upgrade-link">Upgrade →</a>
     </div>
     <div class="user-row">
@@ -271,7 +331,7 @@ audio{width:100%;height:34px;accent-color:#6366f1;}
       <span class="cur">Dashboard</span>
     </div>
     <div class="tb-right">
-      <div class="credits-pill">⚡ 6,600 credits remaining</div>
+      <div class="credits-pill" id="creditsPill">⚡ 10,000 characters left</div>
       <a href="studio.html" class="btn-primary">+ New Generation</a>
     </div>
   </div>
@@ -279,37 +339,74 @@ audio{width:100%;height:34px;accent-color:#6366f1;}
   <!-- Scrollable content -->
   <div class="page-scroll">
 
-    <!-- Page header -->
-    <div class="page-hd">
-      <div class="page-title">Good morning 👋</div>
-      <div class="page-sub">Here's what's happening with your workspace today.</div>
-    </div>
+    <!-- Welcome banner -->
+    <section class="hero-banner">
+      <div class="hb-orb hb-orb1"></div><div class="hb-orb hb-orb2"></div>
+      <div class="hb-text">
+        <div class="hb-eyebrow"><span class="hb-dot"></span> Your voice studio</div>
+        <div class="page-title">Good morning 👋</div>
+        <div class="page-sub">Turn text into natural speech, or speech back into text.</div>
+        <div class="hb-actions">
+          <a href="studio.html" class="hb-btn hb-btn-main"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l2.2 5.3H18l-4.6 3.4 1.7 5.6L10 13l-5.1 3.3 1.7-5.6L2 7.3h5.8z"/></svg> Open Studio</a>
+          <a href="transcribe.html" class="hb-btn"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="6" height="10" rx="3"/><path d="M4 10a6 6 0 0012 0M10 16v2"/></svg> Speech to Text</a>
+        </div>
+      </div>
+      <svg class="hb-wave" viewBox="0 0 210 140" aria-hidden="true">
+        <defs><linearGradient id="hbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4b5fd"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>
+        <circle cx="105" cy="70" r="62" class="hb-ring"/><circle cx="105" cy="70" r="44" class="hb-ring hb-ring2"/>
+        <g fill="url(#hbg)"><rect x="12" y="60" width="7" height="20" rx="3.5" style="animation-delay:0.00s"/><rect x="26" y="48" width="7" height="44" rx="3.5" style="animation-delay:0.12s"/><rect x="40" y="36" width="7" height="68" rx="3.5" style="animation-delay:0.24s"/><rect x="54" y="52" width="7" height="36" rx="3.5" style="animation-delay:0.36s"/><rect x="68" y="30" width="7" height="80" rx="3.5" style="animation-delay:0.48s"/><rect x="82" y="42" width="7" height="56" rx="3.5" style="animation-delay:0.60s"/><rect x="96" y="24" width="7" height="92" rx="3.5" style="animation-delay:0.72s"/><rect x="110" y="46" width="7" height="48" rx="3.5" style="animation-delay:0.00s"/><rect x="124" y="34" width="7" height="72" rx="3.5" style="animation-delay:0.12s"/><rect x="138" y="56" width="7" height="28" rx="3.5" style="animation-delay:0.24s"/><rect x="152" y="40" width="7" height="60" rx="3.5" style="animation-delay:0.36s"/><rect x="166" y="28" width="7" height="84" rx="3.5" style="animation-delay:0.48s"/><rect x="180" y="50" width="7" height="40" rx="3.5" style="animation-delay:0.60s"/><rect x="194" y="58" width="7" height="24" rx="3.5" style="animation-delay:0.72s"/></g>
+      </svg>
+    </section>
 
-    <!-- Stats -->
+    <!-- Stats (worked out from your history) -->
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-icon">🎙</div>
+        <div class="stat-ic ic-indigo"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h2l2-5 3 10 3-7 2 4h2"/></svg></div>
         <div class="stat-label">Generations this month</div>
         <div class="stat-value" id="statGen">—</div>
-        <div class="stat-delta">↑ +12% from last month</div>
+        <div class="stat-sub" id="statGenSub">&nbsp;</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">⚡</div>
-        <div class="stat-label">Characters used</div>
-        <div class="stat-value">3,400</div>
-        <div class="stat-delta">34% of monthly quota</div>
+        <div class="stat-ic ic-violet"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h12M4 10h12M4 15h7"/></svg></div>
+        <div class="stat-label">Characters this month</div>
+        <div class="stat-value" id="statChars">—</div>
+        <div class="stat-sub" id="statCharsSub">&nbsp;</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">⏱</div>
+        <div class="stat-ic ic-cyan"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><path d="M10 6v4l2.5 2"/></svg></div>
         <div class="stat-label">Audio generated</div>
-        <div class="stat-value">8.4 min</div>
-        <div class="stat-delta">↑ +3.2 min this week</div>
+        <div class="stat-value" id="statAudio">—</div>
+        <div class="stat-sub">Estimated from text length</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">🔊</div>
-        <div class="stat-label">Avg. generation time</div>
-        <div class="stat-value">0.8s</div>
-        <div class="stat-delta down">↓ 120ms faster</div>
+        <div class="stat-ic ic-pink"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17s-6-3.6-6-8.2A3.4 3.4 0 0110 6.6a3.4 3.4 0 016 2.2C16 13.4 10 17 10 17z"/></svg></div>
+        <div class="stat-label">Favourite voice</div>
+        <div class="stat-value" id="statVoice">—</div>
+        <div class="stat-sub" id="statVoiceSub">&nbsp;</div>
+      </div>
+    </div>
+
+    <!-- Activity + usage -->
+    <div class="grid-activity">
+      <div class="card card-body">
+        <div class="sec-head">
+          <span class="sec-title">Activity <span class="sec-hint">· generations, last 14 days</span></span>
+          <span class="sec-hint" id="actTotal"></span>
+        </div>
+        <div class="chart" id="actChart" role="img" aria-label="Generations per day for the last 14 days"></div>
+        <div class="chart-tip" id="chartTip"></div>
+      </div>
+      <div class="card card-body usage-ring-card">
+        <div class="sec-head"><span class="sec-title">Monthly quota</span><span class="badge-gold">Free</span></div>
+        <div class="ring-wrap">
+          <svg viewBox="0 0 120 120" class="ring">
+            <defs><linearGradient id="ringg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#818cf8"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
+            <circle cx="60" cy="60" r="50" class="ring-track"/>
+            <circle cx="60" cy="60" r="50" class="ring-fill" id="ringFill"/>
+          </svg>
+          <div class="ring-center"><div class="ring-pct" id="ringPct">0%</div><div class="ring-lbl">used</div></div>
+        </div>
+        <div class="ring-legend" id="ringLegend">0 of 10,000 characters</div>
       </div>
     </div>
 
@@ -337,10 +434,18 @@ audio{width:100%;height:34px;accent-color:#6366f1;}
               <div style="display:flex;align-items:center;gap:7px;">
                 <span style="font-size:.75rem;color:#475569;">Voice:</span>
                 <select class="voice-sel" id="voiceSel">
-                  <option value="aria">Aria (Female, EN)</option>
-                  <option value="atlas">Atlas (Male, EN-GB)</option>
-                  <option value="nova">Nova (Female, AU)</option>
-                  <option value="echo">Echo (Male, EN)</option>
+                  <optgroup label="English">
+                    <option value="aria">Aria (Female, US)</option><option value="echo">Echo (Male, US)</option>
+                    <option value="luna">Luna (Female, US)</option><option value="claire">Claire (Female, US)</option>
+                    <option value="atlas">Atlas (Male, UK)</option><option value="james">James (Male, UK)</option>
+                    <option value="nova">Nova (Female, AU)</option><option value="orion">Orion (Male, AU)</option>
+                    <option value="sage">Sage (Female, CA)</option>
+                  </optgroup>
+                  <optgroup label="Other languages">
+                    <option value="hi_swara">Swara (Hindi, F)</option><option value="hi_madhur">Madhur (Hindi, M)</option>
+                    <option value="es_elvira">Elvira (Spanish, F)</option><option value="fr_denise">Denise (French, F)</option>
+                    <option value="de_katja">Katja (German, F)</option><option value="ja_nanami">Nanami (Japanese, F)</option>
+                  </optgroup>
                 </select>
               </div>
             </div>
@@ -388,40 +493,6 @@ audio{width:100%;height:34px;accent-color:#6366f1;}
       </div>
     </div>
 
-    <!-- Monthly usage -->
-    <div class="usage-section">
-      <div class="sec-head">
-        <span class="sec-title">Monthly Usage</span>
-        <a href="#" class="btn-primary" style="font-size:.75rem;padding:6px 14px;text-decoration:none;">Upgrade plan →</a>
-      </div>
-      <div class="usage-card">
-        <div class="usage-grid">
-          <div>
-            <div class="usage-item-label">
-              <span class="usage-lbl">Characters</span>
-              <span class="usage-val">3,400 / 10,000</span>
-            </div>
-            <div class="usage-track"><div class="usage-fill" style="width:34%"></div></div>
-          </div>
-          <div>
-            <div class="usage-item-label">
-              <span class="usage-lbl">API Requests</span>
-              <span class="usage-val">42 total</span>
-            </div>
-            <div class="usage-track"><div class="usage-fill" style="width:100%;background:#10b981;"></div></div>
-          </div>
-          <div>
-            <div class="usage-item-label">
-              <span class="usage-lbl">Voice Clones</span>
-              <span class="usage-val">0 / 0</span>
-            </div>
-            <div class="usage-track"><div class="usage-fill" style="width:0%"></div></div>
-            <div class="usage-note"><a href="#">Upgrade to Pro</a> for voice cloning</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div><!-- /page-scroll -->
 </div><!-- /main -->
 </div><!-- /shell -->
@@ -465,9 +536,9 @@ async function quickGen() {
     const res = await fetch('/api/speech/', {
       method:'POST',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
-      body: JSON.stringify({text})
+      body: JSON.stringify({text, voice: document.getElementById('voiceSel').value})
     });
-    if (!res.ok) throw new Error();
+    if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.detail || 'Generation failed. Please try again.'); }
     const blob = await res.blob();
     const url = URL.createObjectURL(blob);
     const player = document.getElementById('audioPlayer');
@@ -479,8 +550,8 @@ async function quickGen() {
     player.onplay = () => wave.classList.add('active');
     showToast('Audio generated!','success');
     loadHistory();
-  } catch {
-    showToast('Generation failed. Please try again.','error');
+  } catch (e) {
+    showToast(e.message || 'Generation failed. Please try again.','error');
   } finally {
     btn.classList.remove('loading');
   }
@@ -504,7 +575,7 @@ async function loadHistory() {
       headers:{'Authorization':'Bearer '+token}
     });
     const data = await res.json();
-    document.getElementById('statGen').textContent = data.length;
+    renderStats(data);
     const tbody = document.getElementById('histBody');
     if (!data.length) {
       tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:28px;color:#334155;font-size:.83rem;">No generations yet — try the Quick Generate above!</td></tr>';
@@ -512,16 +583,83 @@ async function loadHistory() {
     }
     tbody.innerHTML = data.slice(0,6).map(item=>`
       <tr>
-        <td><div class="play-btn">▶</div></td>
+        <td><button class="play-btn" title="Play" onclick="vfPlayHistory(this,'${item.id}')">▶</button></td>
         <td><div class="hist-text">${esc(item.text)}</div></td>
-        <td><span class="badge-v">Aria</span></td>
+        <td><span class="badge-v">${esc(vfVoiceName(item.voice))}</span></td>
         <td style="white-space:nowrap;font-size:.75rem;">${relTime(item.created_at)}</td>
       </tr>
     `).join('');
   } catch { /* ignore */ }
 }
 
+const QUOTA = 10000;
+function renderStats(data) {
+  const now = new Date();
+  const month = data.filter(d => { const t = new Date(d.created_at); return t.getMonth() === now.getMonth() && t.getFullYear() === now.getFullYear(); });
+  const today = data.filter(d => new Date(d.created_at).toDateString() === now.toDateString()).length;
+  const chars = month.reduce((n, d) => n + (d.text || '').length, 0);
+  const totalChars = data.reduce((n, d) => n + (d.text || '').length, 0);
+  const secs = Math.round(totalChars / 750 * 60);  // same estimate Studio uses
+
+  document.getElementById('statGen').textContent = month.length;
+  document.getElementById('statGenSub').textContent = today ? today + ' today' : 'None yet today';
+  document.getElementById('statChars').textContent = chars.toLocaleString();
+  document.getElementById('statCharsSub').textContent = Math.round(chars / QUOTA * 100) + '% of ' + QUOTA.toLocaleString();
+  document.getElementById('statAudio').textContent = secs < 60 ? secs + 's' : (secs / 60).toFixed(1) + ' min';
+
+  const counts = {};
+  data.forEach(d => counts[d.voice] = (counts[d.voice] || 0) + 1);
+  const fav = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+  document.getElementById('statVoice').textContent = fav ? vfVoiceName(fav[0]) : '—';
+  document.getElementById('statVoiceSub').textContent = fav ? 'Used ' + fav[1] + ' time' + (fav[1] > 1 ? 's' : '') : 'Generate to find out';
+
+  // Quota ring, sidebar bar and topbar pill
+  const pct = Math.min(100, chars / QUOTA * 100);
+  document.getElementById('ringFill').style.strokeDashoffset = 314.16 * (1 - pct / 100);
+  document.getElementById('ringPct').textContent = Math.round(pct) + '%';
+  document.getElementById('ringLegend').textContent = chars.toLocaleString() + ' of ' + QUOTA.toLocaleString() + ' characters';
+  document.getElementById('sbBar').style.width = pct + '%';
+  document.getElementById('sbUsed').textContent = chars.toLocaleString() + ' used';
+  document.getElementById('creditsPill').textContent = '⚡ ' + Math.max(0, QUOTA - chars).toLocaleString() + ' characters left';
+
+  renderChart(data);
+}
+
+function renderChart(data) {
+  const days = [];
+  for (let i = 13; i >= 0; i--) { const d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate() - i); days.push({ d, n: 0 }); }
+  data.forEach(item => {
+    const t = new Date(item.created_at); t.setHours(0,0,0,0);
+    const day = days.find(x => x.d.getTime() === t.getTime());
+    if (day) day.n++;
+  });
+  const max = Math.max(1, ...days.map(x => x.n));
+  const total = days.reduce((a, x) => a + x.n, 0);
+  document.getElementById('actTotal').textContent = total + ' total';
+  const chart = document.getElementById('actChart');
+  chart.innerHTML = days.map((x, i) => `<div class="chart-col" data-i="${i}"><div class="chart-bar${x.n ? '' : ' zero'}" style="height:0%"></div></div>`).join('');
+  let axis = chart.nextElementSibling;
+  if (!axis.classList.contains('chart-x')) { axis = document.createElement('div'); axis.className = 'chart-x'; chart.after(axis); }
+  axis.innerHTML = days.map((x, i) => `<span>${i % 2 === 1 || i === 13 ? (i === 13 ? 'Today' : x.d.getDate()) : ''}</span>`).join('');
+  requestAnimationFrame(() => chart.querySelectorAll('.chart-bar').forEach((b, i) => b.style.height = (days[i].n / max * 100) + '%'));
+
+  const tip = document.getElementById('chartTip');
+  chart.querySelectorAll('.chart-col').forEach(col => {
+    col.addEventListener('mouseenter', () => {
+      const x = days[+col.dataset.i];
+      tip.innerHTML = '<b>' + x.n + '</b> generation' + (x.n === 1 ? '' : 's') + ' · ' + x.d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+      const card = chart.parentElement.getBoundingClientRect(), r = col.getBoundingClientRect();
+      tip.style.left = (r.left - card.left + r.width / 2) + 'px';
+      tip.style.top = (r.top - card.top + r.height * (1 - x.n / max) - 30) + 'px';
+      tip.classList.add('show');
+    });
+    col.addEventListener('mouseleave', () => tip.classList.remove('show'));
+  });
+}
+
+renderChart([]);
 loadHistory();
 </script>
+<script src="ui.js"></script>
 </body>
 </html>

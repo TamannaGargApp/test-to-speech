@@ -31,13 +31,24 @@ def generate_speech(
     except Exception:
         raise HTTPException(status_code=401, detail="Invalid token")
 
-    audio_file = text_to_speech(
-        text=request.text,
-        voice=request.voice,
-        speed=request.speed,
-        pitch=request.pitch,
-        export_format=request.format,
-    )
+    if not request.text.strip():
+        raise HTTPException(status_code=400, detail="Please enter some text")
+
+    try:
+        audio_file = text_to_speech(
+            text=request.text,
+            voice=request.voice,
+            speed=request.speed,
+            pitch=request.pitch,
+            export_format=request.format,
+        )
+    except Exception as exc:
+        print(f"Speech generation failed: {exc!r}")
+        raise HTTPException(
+            status_code=502,
+            detail="Speech generation failed. Check your internet connection "
+                   "(voices come from Microsoft Edge TTS) and the backend terminal for details."
+        )
 
     audio_collection.insert_one({
         "user_id":    payload["user_id"],
