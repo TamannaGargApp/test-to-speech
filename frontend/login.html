@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In — VoiceForge</title>
-  <link rel="stylesheet" href="design-system.css">
-  <link rel="stylesheet" href="landing.css">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="design-system.css?v=20261009">
+  <link rel="stylesheet" href="landing.css?v=20261009">
+<link rel="stylesheet" href="ui.css?v=20261009">
 </head>
 <body>
 
@@ -15,8 +19,7 @@
   <div class="auth-left">
     <div class="auth-left-content">
       <a href="index.html" class="nav-logo" style="margin-bottom:48px;display:inline-flex;">
-        <div class="logo-icon">🎙</div>
-        <span class="logo-text" style="font-size:1rem;">Voice<span>Forge</span></span>
+        <img src="assets/logo.png" alt="VoiceForge" class="brand-logo">
       </a>
 
       <div class="big-quote">
@@ -58,8 +61,7 @@
     <div class="auth-panel">
 
       <div class="auth-header-mini">
-        <div class="logo-icon" style="width:28px;height:28px;font-size:13px;border-radius:7px;">🎙</div>
-        <span class="logo-text" style="font-size:0.9rem;">Voice<span>Forge</span></span>
+        <img src="assets/logo.png" alt="VoiceForge" class="brand-logo">
       </div>
 
       <h1 class="auth-title">Welcome back</h1>
@@ -108,7 +110,7 @@
 
 <div id="toast"></div>
 
-<script src="auth.js"></script>
+<script src="auth.js?v=20261009"></script>
 <script>
 function showToast(msg, type='') {
   const t = document.getElementById('toast');

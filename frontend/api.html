@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>API — VoiceForge</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -114,14 +117,14 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#030712;color:#f
 @media(max-width:1000px){.api-stats{grid-template-columns:repeat(2,1fr);}.limits-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:700px){.sb{display:none;}.page-scroll{padding:16px;}.api-stats{grid-template-columns:1fr 1fr;}}
 </style>
-<link rel="stylesheet" href="ui.css">
+<link rel="stylesheet" href="ui.css?v=20261009">
 </head>
 <body>
 <script>if(!localStorage.getItem('token'))window.location.href='login.html';</script>
 <div class="shell">
 <aside class="sb">
   <div class="sb-head">
-    <a href="index.html" class="logo"><div class="logo-icon">🎙</div><span class="logo-text">Voice<span>Forge</span></span></a>
+    <a href="index.html" class="logo"><img src="assets/logo.png" alt="VoiceForge" class="brand-logo"></a>
     <button class="ws-btn"><div class="ws-av">P</div><span style="flex:1;text-align:left;">Personal workspace</span><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 4L5.5 7L9 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
   <nav class="sb-nav">
@@ -402,6 +405,6 @@ function copyCode() {
   navigator.clipboard.writeText(text).then(() => showToast('Code copied!', 'success'));
 }
 </script>
-<script src="ui.js"></script>
+<script src="ui.js?v=20261009"></script>
 </body>
 </html>

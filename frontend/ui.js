@@ -105,3 +105,58 @@ async function vfPlayHistory(btn, id) {
     if (typeof showToast === 'function') showToast(e.message || 'Could not play this audio.', 'error');
   }
 }
+
+
+/* ── Profile menu in the sidebar (click your name/email → Log out) ── */
+function vfLogout() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('userEmail');
+  window.location.href = 'login.html';
+}
+(function () {
+  const row = document.querySelector('.sb .user-row');
+  if (!row) return;
+  const foot = row.parentElement;
+  foot.classList.add('vf-profile');
+
+  // The old icon is replaced by a chevron; logging out now lives in the menu
+  const oldBtn = row.querySelector('.logout-btn');
+  if (oldBtn) oldBtn.remove();
+  const chev = document.createElement('span');
+  chev.className = 'vf-chev';
+  chev.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 8.5L7 5.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  row.appendChild(chev);
+
+  row.setAttribute('role', 'button');
+  row.setAttribute('tabindex', '0');
+  row.setAttribute('aria-haspopup', 'menu');
+  row.setAttribute('aria-expanded', 'false');
+  row.title = 'Account';
+
+  const email = localStorage.getItem('userEmail') || 'user@example.com';
+  const icon = p => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + p + '</svg>';
+  const menu = document.createElement('div');
+  menu.className = 'vf-menu';
+  menu.setAttribute('role', 'menu');
+  menu.innerHTML =
+    '<div class="vf-menu-head"><div class="vf-menu-av"></div><div style="min-width:0"><div class="vf-menu-email"></div><div class="vf-menu-plan">Free plan</div></div></div>' +
+    '<a role="menuitem" href="dashboard.html">' + icon('<rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/>') + 'Dashboard</a>' +
+    '<a role="menuitem" href="history.html">' + icon('<circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/>') + 'History</a>' +
+    '<div class="vf-menu-sep"></div>' +
+    '<button role="menuitem" type="button" class="vf-menu-logout">' + icon('<path d="M6 2.5H3.5a1 1 0 00-1 1v9a1 1 0 001 1H6M10.5 11l3-3-3-3M13.5 8H6"/>') + 'Log out</button>';
+  menu.querySelector('.vf-menu-av').textContent = email[0].toUpperCase();
+  menu.querySelector('.vf-menu-email').textContent = email;
+  menu.querySelector('.vf-menu-logout').addEventListener('click', vfLogout);
+  foot.appendChild(menu);
+
+  const setOpen = open => {
+    // Sit just above the profile row, covering the usage box
+    if (open) menu.style.bottom = (foot.clientHeight - row.offsetTop + 6) + 'px';
+    foot.classList.toggle('open', open);
+    row.setAttribute('aria-expanded', String(open));
+  };
+  row.addEventListener('click', e => { e.stopPropagation(); setOpen(!foot.classList.contains('open')); });
+  row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(!foot.classList.contains('open')); } });
+  document.addEventListener('click', e => { if (!foot.contains(e.target)) setOpen(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+})();

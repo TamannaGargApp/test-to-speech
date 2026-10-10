@@ -12,4 +12,5 @@ email-validator
 pydub
 edge-tts
 
-faster-whisper "av<19"
+faster-whisper
+av<19

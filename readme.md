@@ -32,6 +32,11 @@ A full-stack voice platform built with FastAPI, MongoDB, Edge TTS, Whisper, and 
 - Fixed: the Speed and Pitch sliders now change the audio. Before, they were never sent to the backend.
 - Fixed: the "pause" button inserts a plain pause (`...`) instead of an SSML tag that was read out loud. The "emphasis" button was removed for the same reason.
 
+### New logo and favicon
+- The VoiceForge logo (`frontend/assets/logo.png`) replaces the old emoji logo in the landing page header and footer, the app sidebars, and the login and register pages.
+- The mic-and-face icon is the browser tab icon on every page (`frontend/favicon.ico`, `frontend/assets/favicon-32.png`) and the home-screen icon on phones (`frontend/assets/apple-touch-icon.png`).
+- Both images had their backgrounds cleaned up so they sit on the dark theme without a box or halo.
+
 ### Voice cloning is hidden
 - Cloning has been removed from the sidebar of every page, from the dashboard and from the landing-page pricing.
 - `frontend/cloning.html` is still in the project, so the feature can be brought back later by re-adding its sidebar link.
@@ -123,6 +128,8 @@ VoiceForge/
 │   ├── voices.html             # Voice library
 │   ├── cloning.html            # Voice cloning (hidden, not linked anywhere)
 │   ├── api.html                # API reference
+│   ├── assets/                 # logo.png, favicon-32.png, apple-touch-icon.png
+│   ├── favicon.ico             # Browser tab icon
 │   ├── auth.js                 # Login, register, Google sign-in, logout
 │   ├── ui.css                  # Shared UI polish: focus states, motion, mobile layout
 │   └── ui.js                   # Mobile menu drawer, sidebar links, greeting

@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Studio — VoiceForge</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -149,7 +152,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;heigh
 @media(max-width:900px){.studio-body{grid-template-columns:1fr;}.ctrl-side{display:none;}}
 @media(max-width:700px){.sb{display:none;}}
 </style>
-<link rel="stylesheet" href="ui.css">
+<link rel="stylesheet" href="ui.css?v=20261009">
 </head>
 <body>
 <script>if(!localStorage.getItem('token'))window.location.href='login.html';</script>
@@ -160,8 +163,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;heigh
 <aside class="sb">
   <div class="sb-head">
     <a href="index.html" class="logo">
-      <div class="logo-icon">🎙</div>
-      <span class="logo-text">Voice<span>Forge</span></span>
+      <img src="assets/logo.png" alt="VoiceForge" class="brand-logo">
     </a>
     <button class="ws-btn">
       <div class="ws-av">P</div>
@@ -567,6 +569,6 @@ function exportAudio(){
   showToast('Audio exported!','success');
 }
 </script>
-<script src="ui.js"></script>
+<script src="ui.js?v=20261009"></script>
 </body>
 </html>
